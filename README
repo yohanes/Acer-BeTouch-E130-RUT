@@ -1,0 +1,16 @@
+Acer BeTouch E130 ROM Update Tool (for Linux/OS X)
+Copyright (c) 2011 Yohanes Nugroho
+
+This tool can be used for:
+- unpacking nb0 file
+- repacking nb0 file
+- writing a single package from nb0 file to phone
+- writing entire nb0 file to phone (NOT TESTED)
+
+The protocol for the ROM update is proprietary, and I reverse engineer
+it by sniffing the USB communication of Rom Update Tool (RUT) for Windows. 
+
+It may work for other Android phone that uses Windows RUT, but since I
+can not test it, I am labeling this tool only for use in Acer BeTouch
+E130.
+
