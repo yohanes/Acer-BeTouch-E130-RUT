@@ -26,11 +26,12 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-
+#include <errno.h>
 
 #include "rut.h"
 #include "nb0.h"
 #include "mlf.h"
+
 
 const char * license =
 	"\n Acer BeTouch E130 Android ROM Update Tool for Linux\n\n"
@@ -88,9 +89,12 @@ int print_usage()
 
 int extract_nb0_file(int argc, char *argv[])
 {
+	int r;
 	if (argc<4)
 		return print_usage();
-	if (mkdir(argv[3],  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH)!=0) {
+	r = mkdir(argv[3],  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+	if (r!=0 && errno!=EEXIST) {
 		fprintf(stderr, "ERROR creating directory '%s'\n", argv[3]);
 		return -1;
 	}
