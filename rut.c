@@ -306,6 +306,9 @@ static int send_to_device(data_provider *data_prov)
 
 		while (rd>0) {
 			int tr = rd>=TRANSFER_SIZE?TRANSFER_SIZE:rd;
+			
+			/*if (verbose)
+			  hexdump(file_buf + data_offset, tr);*/
 
 			int r = usb_out(tr, file_buf + data_offset);
 			if (r<0) {
@@ -313,6 +316,7 @@ static int send_to_device(data_provider *data_prov)
 				error = 1;
 				break;
 			}
+
 			rd -= r;
 			data_offset += r;
 
@@ -617,6 +621,11 @@ static int sendfile_nb0_package_to_device(const char *filename,
 
 		np.f = f;
 		np.size = header->size + ptt_header->size;
+
+		dp.file_size = np.size;
+
+		fseek(f, ptt_header->nb0_file_offset, SEEK_SET);
+
 		np.read_so_far = 0;
 		np.ptt_size = ptt_header->size;
 		np.data_size = header->size;
