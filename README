@@ -7,7 +7,7 @@ This tool can be used for:
 - writing a single package from nb0 file to phone
 - writing entire nb0 file to phone (NOT TESTED)
 
-The protocol for the ROM update is proprietary, and I reverse engineer
+The protocol for the ROM update is proprietary, and I reverse engineered
 it by sniffing the USB communication of Rom Update Tool (RUT) for Windows. 
 
 It may work for other Android phone that uses Windows RUT, but since I
